@@ -1,258 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>مفكرة</title>
-    <style>
-            body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        #note, #url {
-            width: 80%;
-            padding: 10px;
-            margin: 10px auto;
-            display: block;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 5px auto;
-            max-width: 80%;
-            border-radius: 5px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        #search {
-            width: 80%;
-            padding: 10px;
-            margin: 10px auto;
-            display: block;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-            }
-        /* إضافة أسلوب CSS الخاص بك هنا */
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Translate Button</title>
 </head>
 <body>
-    <h1>موسوعة</h1>
-        <h1>不ألخـ⁹¹¹ـالـدي不</h1>
+<h1>مرحبًا بك في موقعي!</h1>
+<p>هذا هو المحتوى الخاص بي.</p>
 
-    <label for="note">العنوان</label>
-    <input type="text" id="note" placeholder="اكتب هنا">
-    <label for="url">الرابط</label>
-    <input type="text" id="url" placeholder="اكتب هنا">
-    <button onclick="حفظمذكرة()">حفظ المذكرة</button>
+<!-- زر الترجمة -->
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- نهاية زر الترجمة -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Phone Number Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
 
-    <input type="text" id="search" placeholder="ابحث عن مذكرة">
-    <ul id="قائمة-المذكرات">
-    </ul>
+    #container {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-    <script>
-        function حفظمذكرة() {
-            var عنوان_الموقع = document.getElementById("note").value;
-            var رابط_الموقع = document.getElementById("url").value;
+    h1 {
+      color: #343a40;
+    }
 
-            var رابط = document.createElement("a");
-            رابط.href = رابط_الموقع;
-            رابط.textContent = عنوان_الموقع;
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #495057;
+    }
 
-            var عنصر_المذكرة = document.createElement("li");
-            عنصر_المذكرة.appendChild(رابط);
-            document.getElementById("قائمة-المذكرات").appendChild(عنصر_المذكرة);
+    input, button {
+      padding: 10px;
+      margin-bottom: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-            document.getElementById("note").value = "";
-            document.getElementById("url").value = "";
-        }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-        // دالة البحث
-        function بحث() {
-            var كلمة_البحث = document.getElementById("search").value;
-            var المذكرات = document.getElementById("قائمة-المذكرات").getElementsByTagName("li");
+    button:hover {
+      background-color: #218838;
+    }
 
-            for (var i = 0; i < المذكرات.length; i++) {
-                var عنوان_المذكرة = المذكرات[i].getElementsByTagName("a")[0].textContent;
-                if (عنوان_المذكرة.includes(كلمة_البحث)) {
-                    المذكرات[i].style.display = "block";
-                } else {
-                    المذكرات[i].style.display = "none";
-                }
-            }
-        }
+    .clickable {
+      font-size: 18px;
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
 
-        // دالة لإضافة المذكرة إلى القائمة
-        function أضفمذكرة(مذكرة) {
-            var رابط = document.createElement("a");
-            رابط.href = مذكرة.رابط;
-            رابط.textContent = مذكرة.عنوان;
+    #phoneNumbers {
+      text-align: left;
+    }
 
-            var عنصر_المذكرة = document.createElement("li");
-            عنصر_المذكرة.appendChild(رابط);
-            document.getElementById("قائمة-المذكرات").appendChild(عنصر_المذكرة);
-        }
+    #download {
+      margin-top: 16px;
+    }
+  </style>
+  <script>
+    function generateRandomPhoneNumbers() {
+      var countryCode = document.getElementById("customCountryCode").value.trim();
+      var prefix = document.getElementById("prefix").value;
+      var numberOfNumbers = parseInt(document.getElementById("numberOfNumbers").value);
+      var numberLength = parseInt(document.getElementById("numberLength").value);
 
-        // إضافة المذكرات الجديدة
-        var مذكرة1 = {
-            عنوان: "موقع (1)",
-            رابط: "https://ar.mytempsms.com/receive-sms-online/country.html"
-        };
-        أضفمذكرة(مذكرة1);
+      // Ensure the prefix is not longer than the specified length
+      if (prefix.length > numberLength) {
+        alert("Prefix should not exceed the specified length.");
+        return;
+      }
 
-        var مذكرة2 = {
-            عنوان: "الموقع(2)",
-            رابط: "https://receivefreesms.co.uk/"
-        };
-        أضفمذكرة(مذكرة2);
+      var generatedNumbers = [];
 
-        var مذكرة3 = {
-            عنوان: "الموقع(3)",
-            رابط: "https://smstome.com/"
-        };
-        أضفمذكرة(مذكرة3);
+      for (var i = 0; i < numberOfNumbers; i++) {
+        var remainingDigits = numberLength - prefix.length;
+        var phoneNumber = Math.floor(Math.random() * Math.pow(10, remainingDigits));
+        var phoneNumberText = countryCode + prefix + phoneNumber.toString().padStart(remainingDigits, '0');
+        generatedNumbers.push(phoneNumberText);
+      }
 
-        var مذكرة4 = {
-            عنوان: "الموقع(4)",
-            رابط: "https://smscodeonline.com/virtual-phone"
-        };
-        أضفمذكرة(مذكرة4);
+      // Display the' generated phone numbers
+      var phoneNumbersText = generatedNumbers.join("\n");
+      document.getElementById("phoneNumbers").innerHTML = "<strong>Random Phone Numbers:</strong><br>" + generatedNumbers.map(formatClickable).join("<br>");
 
-        var مذكرة5 = {
-            عنوان: "الموقع(5)",
-            رابط: "https://www.freereceivesms.com/en/countrys/"
-        };
-        أضفمذكرة(مذكرة5);
+      // Save phone numbers to a text file
+      saveToFile(phoneNumbersText);
+    }
 
-        var مذكرة6 = {
-            عنوان: "الموقع(6)",
-            رابط: "https://temp-number.com/"
-        };
-        أضفمذكرة(مذكرة6);
+    function formatClickable(number) {
+      return '<span class="clickable" onclick="searchPhoneNumber(\'' + number + '\')">' + number + '</span>';
+    }
 
-        var مذكرة7 = {
-            عنوان: "الموقع(7)",
-            رابط: "https://onlinesim.io/free_numbers/russia"
-        };
-        أضفمذكرة(مذكرة7);
+    function searchPhoneNumber(number) {
+      var searchQuery = number.replace(/ /g, "+");
+      var searchUrl = "https://www.google.com/search?q=" + searchQuery;
+      window.open(searchUrl, "_blank");
+      alert("Searching the web for: " + searchQuery);
+    }
 
-        var مذكرة8 = {
-            عنوان: "الموقع(8)",
-            رابط: "https://online-sms.org/ar"
-        };
-        أضفمذكرة(مذكرة8);
+    function saveToFile(text) {
+      var blob = new Blob([text], { type: "text/plain" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "generated_phone_numbers.txt";
+      a.textContent = "Download Numbers";
+      document.getElementById("download").innerHTML = ''; // Clear previous links
+      document.getElementById("download").appendChild(a);
+    }
+  </script>
+</head>
+<body>
 
-        var مذكرة9 = {
-            عنوان: "الموقع(9)",
-            رابط: "https://getfreesmsnumber.com/virtual-phone"
-        };
-        أضفمذكرة(مذكرة9);
+  <div id="container">
+    <h1>Random Phone Number Generator</h1>
 
-        var مذكرة10 = {
-            عنوان: "الموقع(10)",
-            رابط: "https://https://quackr.io/temporary-numbers/sweden"
-        };
-        أضفمذكرة(مذكرة10);
+    <!-- Manual entry for country code -->
+    <label for="customCountryCode">Enter custom country code:</label>
+    <input type="text" id="customCountryCode" placeholder=" +33">
 
-        var مذكرة11 = {
-            عنوان: "الموقع(11)",
-            رابط: "https://receive-sms-free.cc/regions/"
-        };
-        أضفمذكرة(مذكرة11);
+    <!-- Prefix Input -->
+    <label for="prefix">Phone Number Prefix:</label>
+    <input type="text" id="prefix" placeholder="Enter prefix">
 
-        var مذكرة12 = {
-            عنوان: "(12)الموقع",
-            رابط: "https://receive-sms.cc/Countries/"
-        };
-        أضفمذكرة(مذكرة12);
+    <!-- Number of Numbers Input -->
+    <label for="numberOfNumbers">Number of Numbers:</label>
+    <input type="number" id="numberOfNumbers" value="1" min="1" max="10">
 
-        var مذكرة13 = {
-            عنوان: "الموقع(13)",
-            رابط: "https://jieduanxin.com/Countries/"
-        };
-        أضفمذكرة(مذكرة13);
+    <!-- Number Length Input -->
+    <label for="numberLength">Number Length:</label>
+    <input type="number" id="numberLength" value="10">
 
-                var مذكرة1 = {
-            عنوان: "موقع (14)",
-            رابط: "https://yunduanxin.net/Countries/"
-        };
-        أضفمذكرة(مذكرة1);
+    <br>
 
-        var مذكرة2 = {
-            عنوان: "الموقع(15)",
-            رابط: "https://temporary-phone-number.com/countrys/"
-        };
-        أضفمذكرة(مذكرة2);
+    <!-- Button to generate random phone numbers -->
+    <button onclick="generateRandomPhoneNumbers()">Generate Random Phone Numbers</button>
 
-        var مذكرة3 = {
-            عنوان: "الموقع(16)",
-            رابط: "https://in.bestreceivesms.com/country"
-        };
-        أضفمذكرة(مذكرة3);
+    <!-- Display the generated phone numbers -->
+    <p id="phoneNumbers"></p>
 
-        var مذكرة4 = {
-            عنوان: "الموقع(17)",
-            رابط: "https://nl.mytempsms.com/receive-sms-online/country.html"
-        };
-        أضفمذكرة(مذكرة4);
+    <!-- Download link -->
+    <div id="download"></div>
+  </div>
 
-        var مذكرة5 = {
-            عنوان: "الموقع(18)",
-            رابط: "https://smsnator.online/"
-        };
-        أضفمذكرة(مذكرة5);
-
-        var مذكرة6 = {
-            عنوان: "الموقع(19)",
-            رابط: "https://smsnator.online/"
-        };
-        أضفمذكرة(مذكرة6);
-
-        var مذكرة7 = {
-            عنوان: "الموقع(20)",
-            رابط: "https://www.receivesms.co/"
-        };
-        أضفمذكرة(مذكرة7);
-
-        // إضافة المذكرات الأخرى هنا
-
-        // دعوة دالة البحث عندما يتم النقر على زر البحث
-        document.getElementById("search").addEventListener("input", بحث);
-    </script>
 </body>
 </html>
